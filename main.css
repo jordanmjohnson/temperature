@@ -1,0 +1,114 @@
+body { /* determines background and centers text*/
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+}
+
+.neon { 
+    position: relative; /*helps keep neon animation from infesting the whole page*/
+    overflow: hidden; /*helps to better combine the colors to the text*/
+    filter: brightness(200%); /*determines brighness of text*/
+}
+
+.text { /* changes background to black and sets font family, size, and weight*/
+    background-color: black;
+    color: white;
+    font-size: 90px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    position: relative;
+    user-select: none;
+}
+
+.text::before { 
+    content: attr(data-text);
+    position: absolute;
+    color: white;
+    filter: blur(0.02em);
+    mix-blend-mode: difference;
+}
+
+.gradient {
+    position: absolute;
+    background: linear-gradient(45deg, red, gold, lightgreen, gold, red);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    mix-blend-mode: multiply;
+}
+
+.spotlight {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(
+            circle,
+            white,
+            transparent 25%
+        ) center / 25% 25%,
+        radial-gradient(
+            circle,
+            white,
+            black 25%
+        ) center / 12.5% 12.5%;
+    animation: light 5s linear infinite;
+    mix-blend-mode: color-dodge;
+}
+
+@keyframes light {
+    to {
+        transform: translate(50%, 50%);
+    }
+}
+
+* {
+    margin: 0; /*sets font family and padding for input buttons */
+    padding: 0;
+    font-family: sans-serif;
+}
+
+main { /* determines background color, width, and height */
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #000000, #000000);
+}
+
+header { /* centers input texts and pads the inputs and the header */
+    display: flex;
+    justify-content: center;
+    padding-top: 200px;
+}
+
+h1 { /* determines margins from the bottom */
+    margin-bottom: 30px;
+}
+
+.inputs { /* forces all inputs to be centered and stacked vertically */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+.input { /*sets background for inputs and furthers .inputs instructions */
+    flex: 1 1 40%;
+    margin: 15px;
+    appearance: none;
+    background: none;
+    background-color: #FFF;
+    border-radius: 8px;
+    padding: 15px;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
